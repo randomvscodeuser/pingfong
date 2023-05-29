@@ -24,3 +24,8 @@ h4{
 .modal-dialog{
     width: 90%;
 }
+
+canvas{
+    width: 650;
+    height: 450;
+}
