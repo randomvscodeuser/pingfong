@@ -1,4 +1,6 @@
-
+rightWristX = 0;
+rightWristY = 0;
+rightWristScore = 0;
 /*created by prashant shukla */
 
 var paddle2 =10,paddle1=10;
@@ -25,6 +27,7 @@ function setup(){
   var canvas =  createCanvas(700,600);
   canvas.parent("canvas")
   video = createCapture(VIDEO);
+  video.size(700, 600);
   video.hide();
   poseNet = ml5.poseNet(video, modelLoaded);
   poseNet.on('pose', gotPoses);
@@ -36,14 +39,17 @@ function modelLoaded(){
 
 function gotPoses(results){
   if(results.length > 0){
-    noseX = results[0].pose.nose.x;
-    noseY = results[0].pose.nose.y;
+    rightWristX = results[0].pose.rightWrist.x;
+		rightWristY = results[0].pose.rightWrist.y;
+    rightWristScore = results[0].pose.keypoints[10].score;
+    console.log("rightwristx = " + rightWristX + ", rightwristy = " + rightWristY);
   }
 }
 
 function draw(){
- image(video, 0, 0, 700, 600);
- background(0); 
+  background(0); 
+  image(video, 0, 0, 700, 600);
+
 
  fill("black");
  stroke("black");
@@ -80,6 +86,12 @@ function draw(){
    
    //function move call which in very important
     move();
+
+    if(rightWristScore > 0.2){
+      fill("#FF0000");
+      stroke("FF0000");
+      circle(rightWristX, rightwristY, 20);
+    }
 }
 
 

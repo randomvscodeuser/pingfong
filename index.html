@@ -18,16 +18,16 @@
         <center>
             <div class="btn btn-primary heading">
                 <h3>AI ping pong</h3>
-                <button class="btn btn-primary" data-toggle="modal" data-target="myModal"></button>instructions</button>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">instructions</button>
             </div>
-            <button class="btn btn-success">Ping Pong!</button>
+            <button class="btn btn-success" onclick="startGame()" id="start">Ping Pong!</button>
             <button class="btn btn-danger" onclick="restart()">restart</button>
             <br><br>
             <h3 id="status" class="btn btn-warning"></h3>
             <br><br>
             <div id="canvas"></div>
             <h4>Created by Lia Alex</h4>
-            <div id="myModal" class="modal fade"></div>
+            <div id="myModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -35,8 +35,18 @@
                         <h4>instructions you must know!!111!</h4>       
                         <p>move your mouse up and down to move the paddle. The ball increases speed with each pass, so be alert!</p>
                     </div>
+                    <div class="modal-body">
+                        <ol>
+                            <li>First, keep your laptop/computer screen straight.</li>
+                            <li>Move yourself approximately 3-4 feet away from the laptop/computer.</li>
+                            <li>Move your right wrist in an ascending/descending manner. A right dot should appear on your right wrist.</li>
+                            <li>Press the play button, and again move yourself 3-4 feet away from the laptop/computer.</li>
+                            <li>The red paddle is your paddle, that will move in the movement of your right wrist.</li>
+                        </ol>
+                    </div>
                 </div>
             </div>      
+            </div>
         </center>
         <script src="main.js"></script>
     </body>
