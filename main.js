@@ -41,8 +41,19 @@ poseNet = ml5.poseNet(video, modelLoaded);
 poseNet.on('pose', gotPoses);
 }
 
+function preload(){
+  paddle_touch = loadSound("ball_touch_paddel.wav");
+  miss = loadSound("missed.wav");
+}
+
 function modelLoaded() {
   console.log('PoseNet Is Initialized');
+}
+
+function restart(){
+  pcscore = 0;
+  score1 = 0;
+  score2 = 0;
 }
 
 function gotPoses(results)
@@ -166,11 +177,11 @@ function move(){
   if (ball.x-2.5*ball.r/2< 0){
   if (ball.y >= paddle1Y&& ball.y <= paddle1Y + paddle1Height) {
     ball.dx = -ball.dx+0.5; 
-    
+    paddle_touch.play();
   }
   else{
     pcscore++;
-    
+    miss.play();
     reset();
     navigator.vibrate(100);
   }
